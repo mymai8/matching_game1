@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+  box-sizing: border-box;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+ * {font-family: 'Yomogi', cursive;}
