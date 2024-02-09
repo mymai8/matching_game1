@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_09_014817) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_09_042203) do
   create_table "coaches", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "rank_id", null: false
