@@ -53,6 +53,12 @@ li {
   color: #333333;
 }
 
+.new-student {
+  text-decoration: none;
+  line-height: 32px;
+  color: #333333;
+}
+
 .logout {
   text-decoration: none;
   line-height: 32px;
