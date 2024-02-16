@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_09_042203) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_09_053205) do
   create_table "coaches", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "rank_id", null: false
@@ -29,6 +29,31 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_042203) do
     t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
+  create_table "orders", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coach_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_orders_on_coach_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payments", charset: "utf8", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.bigint "order_id", null: false
+    t.integer "rank_id", null: false
+    t.text "character", null: false
+    t.string "play_style", null: false
+    t.string "play_time", null: false
+    t.text "play_device", null: false
+    t.text "communication_tool", null: false
+    t.text "goal", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_payments_on_coach_id"
+    t.index ["order_id"], name: "index_payments_on_order_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -44,4 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_042203) do
   end
 
   add_foreign_key "coaches", "users"
+  add_foreign_key "orders", "coaches"
+  add_foreign_key "orders", "users"
+  add_foreign_key "payments", "coaches"
+  add_foreign_key "payments", "orders"
 end
